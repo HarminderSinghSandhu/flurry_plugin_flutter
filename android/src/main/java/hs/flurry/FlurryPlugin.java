@@ -1,4 +1,4 @@
-package mt.innovation.flurry;
+package hs.flurry;
 
 import android.content.Context;
 import android.util.Log;
