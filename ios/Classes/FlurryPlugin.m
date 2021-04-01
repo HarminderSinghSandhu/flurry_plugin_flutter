@@ -45,7 +45,17 @@
         NSString *userId = (NSString*)arguments[@"userId"];
         [Flurry setUserID:userId];
         result(nil);
-    } else {
+    }
+    else if ([@"logError" isEqualToString:call.method]) {
+            NSDictionary *arguments = (NSDictionary*)call.arguments;
+            NSString *errorId = (NSString*)arguments[@"errorId"];
+            NSString *exception = (NSString*)arguments[@"exception"];
+            NSString *message = (NSString*)arguments[@"message"];
+
+            [Flurry logError:errorId message:message error:exception];
+            result(nil);
+        }
+    else {
         result(FlutterMethodNotImplemented);
     }
 }
