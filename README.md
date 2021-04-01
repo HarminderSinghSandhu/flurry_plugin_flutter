@@ -32,8 +32,7 @@ Flurry.logEvent("event name");
 logging error:
 
 ``` dart
-Flurry.logError(
-        "errorId", "exception", "stackTrace");
+Flurry.logError("errorId", "exception", "stackTrace");
 ```
 
 [flurry_sdk_android]: https://developer.yahoo.com/flurry/docs/integrateflurry/android

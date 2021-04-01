@@ -1,4 +1,4 @@
-package mt.innovation.flurrypluginexample;
+package hs.flurry.plugin;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

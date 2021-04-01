@@ -1,8 +1,17 @@
-import 'package:flurry/flurry.dart';
-import 'package:flutter/material.dart';
 import 'dart:async';
 
-void main() => runApp(MyApp());
+import 'package:flurry/flurry_plugin.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runZonedGuarded(() {
+    runApp(MyApp());
+  }, (error, stackTrace) async {
+    debugPrint("Error runZonedGuarded $error");
+    await Flurry.logError(
+        "${error.hashCode}", "${error.toString()}", stackTrace.toString());
+  });
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -34,7 +43,8 @@ class _MyAppState extends State<MyApp> {
           title: const Text('A Flurry plugin example app'),
         ),
         body: Center(
-          child: Text('Should log event. Please close the app and wait a few seconds for events to be sent.'),
+          child: Text(
+              'Should log event. Please close the app and wait a few seconds for events to be sent.'),
         ),
       ),
     );
