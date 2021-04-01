@@ -64,7 +64,16 @@ public class FlurryPlugin implements MethodCallHandler {
       setUserId(userId);
       result.success(null);
 
-    } else {
+    }
+    else if(call.method.equals("logError")){
+      String message = call.argument("message").toString();
+      String exception = call.argument("exception").toString();
+      String errorId = call.hasArgument("errorId")?call.argument("errorId").toString():"";
+
+      FlurryAgent.onError(errorId, message, exception);
+      result.success(null);
+    }
+    else {
       result.notImplemented();
     }
   }

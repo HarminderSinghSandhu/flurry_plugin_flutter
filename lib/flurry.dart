@@ -39,4 +39,16 @@ class Flurry {
     await _channel.invokeMethod('userId', args);
     return null;
   }
+
+  // self created function
+  static Future<Null> logError(
+      String errorId, String exception, String message) async {
+    Map<String, dynamic> args = <String, dynamic>{};
+    args.putIfAbsent("errorId", () => errorId);
+    args.putIfAbsent("exception", () => exception);
+    args.putIfAbsent("message", () => message);
+
+    await _channel.invokeMethod('logError', args);
+    return null;
+  }
 }
